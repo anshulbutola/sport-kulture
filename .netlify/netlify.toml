@@ -1,25 +1,33 @@
-plugins = []
-headers = []
-redirects = []
-
-[functions]
-
-[functions."*"]
-
 [build]
-publish = "C:\\Users\\anshu\\sport-kulture"
-publishOrigin = "default"
+publish = "."
 
 [build.environment]
+NODE_VERSION = "20"
 
 [build.processing]
+css = "tailwindcss"
+html = "html-minifier"
+js = "terser"
+images = "imagemin"
 
-[build.processing.css]
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
 
-[build.processing.html]
+[[redirects]]
+from = "/podcast"
+to = "#podcast"
+status = 302
 
-[build.processing.images]
+[[redirects]]
+from = "/magazine"
+to = "#magazine"
+status = 302
 
-[build.processing.js]
-
-[build.services]
+[[redirects]]
+from = "/contact"
+to = "#contact"
+status = 302
