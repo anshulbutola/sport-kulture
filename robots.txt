@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sportkulture.com/sitemap.xml
