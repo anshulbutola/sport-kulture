@@ -57,6 +57,188 @@
         .group:hover .line-animation {
             width: 100%;
         }
+
+        body {
+            background-color: #0a0a0a;
+        }
+
+        section {
+            scroll-margin-top: 96px;
+        }
+
+        .nav-link {
+            position: relative;
+            color: #9ca3af;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #dc2626, #f87171);
+            transition: width 0.25s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus-visible {
+            color: #ffffff;
+        }
+
+        .nav-link:hover::after,
+        .nav-link:focus-visible::after {
+            width: 100%;
+        }
+
+        .btn-primary,
+        .btn-secondary,
+        .social-link,
+        .payment-option,
+        .video-fullscreen {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover,
+        .social-link:hover,
+        .payment-option:hover,
+        .video-fullscreen:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            box-shadow: 0 16px 24px rgba(220, 38, 38, 0.2);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 20px 30px rgba(220, 38, 38, 0.28);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 12px 20px rgba(255, 255, 255, 0.08);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-card,
+        .feature-item,
+        .testimonial-card,
+        .contact-tile {
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .stat-card:hover,
+        .feature-item:hover,
+        .testimonial-card:hover,
+        .contact-tile:hover {
+            transform: translateY(-4px);
+            border-color: rgba(220, 38, 38, 0.3);
+        }
+
+        .scroll-indicator {
+            animation: floatDown 1.8s ease-in-out infinite;
+        }
+
+        .hero-gradient::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(220, 38, 38, 0.18), transparent 35%);
+            pointer-events: none;
+        }
+
+        .logo-mark {
+            filter: drop-shadow(0 10px 18px rgba(220, 38, 38, 0.25));
+        }
+
+        .premium-panel {
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.22);
+        }
+
+        .eyebrow {
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        .editorial-heading {
+            letter-spacing: -0.04em;
+            text-wrap: balance;
+        }
+
+        .editorial-copy {
+            letter-spacing: 0.01em;
+        }
+
+        .hero-gradient .reveal {
+            position: relative;
+            z-index: 1;
+        }
+
+        .luxury-grid {
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-position: center center;
+        }
+
+        @keyframes floatDown {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 8px); }
+        }
+
+        @media (max-width: 767px) {
+            .hero-gradient {
+                min-height: 100svh;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-gradient .reveal {
+                width: 100%;
+            }
+
+            .nav-link {
+                font-size: 0.95rem;
+            }
+
+            .video-fullscreen {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-brand-black text-brand-light font-body antialiased">
@@ -65,22 +247,19 @@
     <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-black/90 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="#" class="flex items-center gap-2">
-                    <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-xl">SK</span>
-                    </div>
-                    <span class="text-xl font-bold tracking-tight">Sport<span class="text-brand-red">Kulture</span></span>
+                <a href="#" class="flex items-center gap-3 logo-mark">
+                    <img src="access/logo.svg" alt="Sport Kulture" class="h-9 w-auto">
                 </a>
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
-                    <a href="#podcast" class="text-gray-400 hover:text-white transition-colors">Podcast</a>
-                    <a href="#magazine" class="text-gray-400 hover:text-white transition-colors">Magazine</a>
-                    <a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#podcast" class="nav-link">Podcast</a>
+                    <a href="#magazine" class="nav-link">Magazine</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </div>
-                <a href="#contact" class="hidden md:inline-flex px-5 py-2.5 bg-brand-red hover:bg-brand-red-dark text-white font-medium rounded-lg transition-colors">
+                <a href="#contact" class="btn-primary hidden md:inline-flex px-5 py-2.5 bg-brand-red hover:bg-brand-red-dark text-white font-medium rounded-lg transition-colors">
                     Get In Touch
                 </a>
-                <button id="mobile-menu-btn" class="md:hidden text-white">
+                <button id="mobile-menu-btn" class="md:hidden text-white" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
@@ -90,11 +269,11 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-gray border-t border-white/5">
             <div class="px-6 py-4 space-y-4">
-                <a href="#about" class="block text-gray-400 hover:text-white transition-colors">About</a>
-                <a href="#podcast" class="block text-gray-400 hover:text-white transition-colors">Podcast</a>
-                <a href="#magazine" class="block text-gray-400 hover:text-white transition-colors">Magazine</a>
-                <a href="#contact" class="block text-gray-400 hover:text-white transition-colors">Contact</a>
-                <a href="#contact" class="inline-flex px-5 py-2.5 bg-brand-red text-white font-medium rounded-lg">Get In Touch</a>
+                <a href="#about" class="nav-link block">About</a>
+                <a href="#podcast" class="nav-link block">Podcast</a>
+                <a href="#magazine" class="nav-link block">Magazine</a>
+                <a href="#contact" class="nav-link block">Contact</a>
+                <a href="#contact" class="btn-primary inline-flex px-5 py-2.5 bg-brand-red text-white font-medium rounded-lg">Get In Touch</a>
             </div>
         </div>
     </nav>
@@ -110,25 +289,25 @@
         <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M30 5L35 15L45 15L37 22L40 32L30 26L20 32L23 22L15 15L25 15Z\" fill=\"%23fff\" fill-opacity=\"0.1\"/%3E%3C/svg%3E');"></div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
-            <div class="mb-6">
-                <span class="inline-flex items-center gap-2 px-4 py-2 bg-brand-red/10 border border-brand-red/20 rounded-full text-brand-red text-sm font-medium">
+            <div class="mb-6 reveal">
+                <span class="eyebrow inline-flex items-center gap-2 px-4 py-2 bg-brand-red/10 border border-brand-red/20 rounded-full text-brand-red text-sm font-medium">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                     Podcast &bull; Magazine &bull; Inspiration
                 </span>
             </div>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 leading-tight">
+            <h1 class="reveal editorial-heading text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 leading-[0.9]">
                 Stories That<br>
                 <span class="text-gradient">Inspire</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <p class="reveal editorial-copy text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
                 We bring you closer to corporate cricket legends. Their journeys, their struggles, their triumphs — told through immersive podcasts and our premium magazine.
             </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#podcast" class="px-8 py-4 bg-brand-red hover:bg-brand-red-dark text-white font-semibold rounded-lg transition-all duration-300 red-glow flex items-center gap-2">
+            <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#podcast" class="btn-primary px-8 py-4 bg-brand-red hover:bg-brand-red-dark text-white font-semibold rounded-lg red-glow flex items-center gap-2">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
                     Listen Now
                 </a>
-                <a href="#magazine" class="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white font-semibold rounded-lg transition-all duration-300 flex items-center gap-2">
+                <a href="#magazine" class="btn-secondary px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/20 text-white font-semibold rounded-lg flex items-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                     Read Magazine
                 </a>
@@ -136,78 +315,33 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2">
             <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
             </svg>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-brand-gray">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <span class="text-brand-red font-medium tracking-wider uppercase text-sm">About Us</span>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold mt-4 mb-6">Where Passion Meets Purpose</h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                        Sport Kulture was born from a simple belief: every corporate cricket player has a story worth telling. We're not just about scores and statistics — we're about the human spirit behind the game.
-                    </p>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                        Through our intimate podcast conversations and beautifully crafted magazine, we bring you closer to the legends who balance boardroom battles with boundary shots. Their journeys inspire us to push beyond limits.
-                    </p>
-                    <div class="grid grid-cols-3 gap-6">
-                        <div>
-                            <div class="text-4xl font-bold text-brand-red">50+</div>
-                            <div class="text-gray-500 mt-1">Episodes</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-bold text-brand-red">12</div>
-                            <div class="text-gray-500 mt-1">Magazines</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-bold text-brand-red">100K+</div>
-                            <div class="text-gray-500 mt-1">Listeners</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="aspect-square bg-brand-black rounded-2xl overflow-hidden border border-white/10">
-                        <div class="absolute inset-0 bg-gradient-to-br from-brand-red/20 to-transparent"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="text-center">
-                                <div class="w-32 h-32 mx-auto bg-brand-red/20 rounded-full flex items-center justify-center mb-6">
-                                    <svg class="w-16 h-16 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                                </div>
-                                <p class="text-2xl font-display font-bold">Cricket Meets</p>
-                                <p class="text-2xl font-display font-bold text-brand-red">Corporate Excellence</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-red/10 rounded-2xl -z-10"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Podcast Section -->
-    <section id="podcast" class="py-24 bg-brand-black">
+    <section id="podcast" class="reveal luxury-grid py-24 bg-brand-black">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <span class="text-brand-red font-medium tracking-wider uppercase text-sm">Our Podcast</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold mt-4 mb-6">Voices of the Game</h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Intimate conversations with corporate cricket legends. Real stories, real struggles, real inspiration.</p>
+                <span class="eyebrow text-brand-red font-medium">Our Podcast</span>
+                <h2 class="editorial-heading text-4xl md:text-5xl font-display font-bold mt-4 mb-6">Voices of the Game</h2>
+                <p class="editorial-copy text-gray-400 text-lg max-w-2xl mx-auto">Intimate conversations with corporate cricket legends. Real stories, real struggles, real inspiration.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Episode Card 1 -->
-                <div class="group card-hover bg-brand-gray rounded-2xl overflow-hidden border border-white/5">
-                    <div class="aspect-video bg-gradient-to-br from-brand-red/30 to-brand-black relative">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                        </div>
+                <div class="group card-hover premium-panel bg-brand-gray rounded-2xl overflow-hidden border border-white/5">
+                    <div class="aspect-video bg-brand-black relative overflow-hidden">
+                        <video class="w-full h-full object-cover" controls playsinline preload="metadata" aria-label="Episode 52 video">
+                            <source src="access/video-1.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                        <button type="button" class="video-fullscreen absolute bottom-14 right-3 z-10 w-10 h-10 bg-black/70 hover:bg-brand-red text-white rounded-lg flex items-center justify-center transition-colors" aria-label="View Episode 52 video fullscreen" title="Fullscreen">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3"/></svg>
+                        </button>
                         <div class="absolute top-4 left-4 px-3 py-1 bg-brand-red text-white text-xs font-medium rounded-full">NEW</div>
                     </div>
                     <div class="p-6">
@@ -228,13 +362,15 @@
                 </div>
 
                 <!-- Episode Card 2 -->
-                <div class="group card-hover bg-brand-gray rounded-2xl overflow-hidden border border-white/5">
-                    <div class="aspect-video bg-gradient-to-br from-brand-red/20 to-brand-black relative">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                        </div>
+                <div class="group card-hover premium-panel bg-brand-gray rounded-2xl overflow-hidden border border-white/5">
+                    <div class="aspect-video bg-brand-black relative overflow-hidden">
+                        <video class="w-full h-full object-cover" controls playsinline preload="metadata" aria-label="Episode 51 video">
+                            <source src="access/video-2.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                        <button type="button" class="video-fullscreen absolute bottom-14 right-3 z-10 w-10 h-10 bg-black/70 hover:bg-brand-red text-white rounded-lg flex items-center justify-center transition-colors" aria-label="View Episode 51 video fullscreen" title="Fullscreen">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3"/></svg>
+                        </button>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 text-gray-500 text-sm mb-3">
@@ -254,13 +390,15 @@
                 </div>
 
                 <!-- Episode Card 3 -->
-                <div class="group card-hover bg-brand-gray rounded-2xl overflow-hidden border border-white/5">
-                    <div class="aspect-video bg-gradient-to-br from-brand-red/10 to-brand-black relative">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                        </div>
+                <div class="group card-hover premium-panel bg-brand-gray rounded-2xl overflow-hidden border border-white/5">
+                    <div class="aspect-video bg-brand-black relative overflow-hidden">
+                        <video class="w-full h-full object-cover" controls playsinline preload="metadata" aria-label="Episode 50 video">
+                            <source src="access/video-3.mp4" type="video/mp4">
+                            Your browser does not support HTML video.
+                        </video>
+                        <button type="button" class="video-fullscreen absolute bottom-14 right-3 z-10 w-10 h-10 bg-black/70 hover:bg-brand-red text-white rounded-lg flex items-center justify-center transition-colors" aria-label="View Episode 50 video fullscreen" title="Fullscreen">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3"/></svg>
+                        </button>
                     </div>
                     <div class="p-6">
                         <div class="flex items-center gap-2 text-gray-500 text-sm mb-3">
@@ -290,40 +428,30 @@
     </section>
 
     <!-- Magazine Section -->
-    <section id="magazine" class="py-24 bg-brand-gray">
+    <section id="magazine" class="reveal min-h-screen py-24 bg-brand-gray flex items-center luxury-grid">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1">
                     <div class="relative">
                         <div class="aspect-[3/4] bg-brand-black rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="text-center px-8">
-                                    <div class="text-brand-red text-sm font-medium tracking-widest uppercase mb-4">Latest Issue</div>
-                                    <div class="w-24 h-24 mx-auto bg-brand-red/20 rounded-full flex items-center justify-center mb-6">
-                                        <span class="text-4xl font-display font-bold text-brand-red">12</span>
-                                    </div>
-                                    <h3 class="text-2xl font-display font-bold mb-2">The Champions Issue</h3>
-                                    <p class="text-gray-400">Featuring exclusive interviews with this season's MVPs and the untold stories behind their success.</p>
-                                </div>
-                            </div>
+                            <img src="access/magazine-cover.jpeg" alt="Sport Kulture magazine cover" class="w-full h-full object-cover">
                         </div>
                         <div class="absolute -bottom-4 -right-4 lg:-right-8 w-48 h-64 bg-brand-red/10 rounded-2xl -z-10"></div>
                         <div class="absolute -top-4 -left-4 lg:-left-8 w-24 h-24 bg-brand-red/5 rounded-full -z-10"></div>
                     </div>
                 </div>
                 <div class="order-1 lg:order-2">
-                    <span class="text-brand-red font-medium tracking-wider uppercase text-sm">Our Magazine</span>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold mt-4 mb-6">Stories Worth Keeping</h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                    <span class="eyebrow text-brand-red font-medium">Our Magazine</span>
+                    <h2 class="editorial-heading text-4xl md:text-5xl font-display font-bold mt-4 mb-6">Stories Worth Keeping</h2>
+                    <p class="editorial-copy text-gray-400 text-lg leading-relaxed mb-6">
                         Our quarterly magazine is a collector's edition. Beautiful photography, in-depth features, and exclusive interviews you won't find anywhere else.
                     </p>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    <p class="editorial-copy text-gray-400 text-lg leading-relaxed mb-8">
                         Each issue is crafted with care, designed to inspire and motivate. From training tips to leadership lessons, every page tells a story of determination and success.
                     </p>
 
                     <div class="space-y-4 mb-8">
-                        <div class="flex items-center gap-4">
+                        <div class="feature-item flex items-center gap-4 p-3 rounded-xl border border-white/5 bg-white/0">
                             <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                             </div>
@@ -332,7 +460,7 @@
                                 <p class="text-gray-500 text-sm">Deep conversations you won't hear on the podcast</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
+                        <div class="feature-item flex items-center gap-4 p-3 rounded-xl border border-white/5 bg-white/0">
                             <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             </div>
@@ -341,7 +469,7 @@
                                 <p class="text-gray-500 text-sm">Capturing the emotion of every game</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
+                        <div class="feature-item flex items-center gap-4 p-3 rounded-xl border border-white/5 bg-white/0">
                             <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                             </div>
@@ -352,8 +480,8 @@
                         </div>
                     </div>
 
-                    <a href="#" class="inline-flex items-center gap-2 px-6 py-3 bg-brand-red hover:bg-brand-red-dark text-white font-semibold rounded-lg transition-colors">
-                        Subscribe to Magazine
+                    <a href="#" id="subscribe-button" data-amount="29900" class="btn-primary inline-flex items-center gap-2 px-6 py-3 bg-brand-red hover:bg-brand-red-dark text-white font-semibold rounded-lg">
+                        Subscribe for ₹299
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>
                 </div>
@@ -361,16 +489,63 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="reveal min-h-screen py-24 bg-brand-gray flex items-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="eyebrow text-brand-red font-medium">About Us</span>
+                    <h2 class="editorial-heading text-4xl md:text-5xl font-display font-bold mt-4 mb-6">Where Passion Meets Purpose</h2>
+                    <p class="editorial-copy text-gray-400 text-lg leading-relaxed mb-6">
+                        Sport Kulture was born from a simple belief: every corporate cricket player has a story worth telling. We're not just about scores and statistics — we're about the human spirit behind the game.
+                    </p>
+                    <p class="editorial-copy text-gray-400 text-lg leading-relaxed mb-8">
+                        Through our intimate podcast conversations and beautifully crafted magazine, we bring you closer to the legends who balance boardroom battles with boundary shots. Their journeys inspire us to push beyond limits.
+                    </p>
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="stat-card rounded-2xl border border-white/5 bg-brand-black/30 p-4">
+                            <div class="text-4xl font-bold text-brand-red">50+</div>
+                            <div class="text-gray-500 mt-1">Episodes</div>
+                        </div>
+                        <div class="stat-card rounded-2xl border border-white/5 bg-brand-black/30 p-4">
+                            <div class="text-4xl font-bold text-brand-red">12</div>
+                            <div class="text-gray-500 mt-1">Magazines</div>
+                        </div>
+                        <div class="stat-card rounded-2xl border border-white/5 bg-brand-black/30 p-4">
+                            <div class="text-4xl font-bold text-brand-red">100K+</div>
+                            <div class="text-gray-500 mt-1">Listeners</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square bg-brand-black rounded-2xl overflow-hidden border border-white/10">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-red/20 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-32 h-32 mx-auto bg-brand-red/20 rounded-full flex items-center justify-center mb-6">
+                                    <svg class="w-16 h-16 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                </div>
+                                <p class="text-2xl font-display font-bold">Cricket Meets</p>
+                                <p class="text-2xl font-display font-bold text-brand-red">Corporate Excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-red/10 rounded-2xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonial Section -->
-    <section class="py-24 bg-brand-black">
+    <section class="reveal py-24 bg-brand-black">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <span class="text-brand-red font-medium tracking-wider uppercase text-sm">What They Say</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold mt-4">Stories That Move Us</h2>
+                <span class="eyebrow text-brand-red font-medium">What They Say</span>
+                <h2 class="editorial-heading text-4xl md:text-5xl font-display font-bold mt-4">Stories That Move Us</h2>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-brand-gray p-8 rounded-2xl border border-white/5">
+                <div class="testimonial-card premium-panel bg-brand-gray p-8 rounded-2xl border border-white/5">
                     <div class="flex gap-1 mb-4">
                         <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -390,7 +565,7 @@
                     </div>
                 </div>
 
-                <div class="bg-brand-gray p-8 rounded-2xl border border-white/5">
+                <div class="testimonial-card premium-panel bg-brand-gray p-8 rounded-2xl border border-white/5">
                     <div class="flex gap-1 mb-4">
                         <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -410,7 +585,7 @@
                     </div>
                 </div>
 
-                <div class="bg-brand-gray p-8 rounded-2xl border border-white/5">
+                <div class="testimonial-card premium-panel bg-brand-gray p-8 rounded-2xl border border-white/5">
                     <div class="flex gap-1 mb-4">
                         <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         <svg class="w-5 h-5 text-brand-red" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -434,18 +609,18 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-brand-gray">
+    <section id="contact" class="reveal py-24 bg-brand-gray">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16">
                 <div>
-                    <span class="text-brand-red font-medium tracking-wider uppercase text-sm">Get In Touch</span>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold mt-4 mb-6">Let's Create Something Great</h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                    <span class="eyebrow text-brand-red font-medium">Get In Touch</span>
+                    <h2 class="editorial-heading text-4xl md:text-5xl font-display font-bold mt-4 mb-6">Let's Create Something Great</h2>
+                    <p class="editorial-copy text-gray-400 text-lg leading-relaxed mb-8">
                         Want to be a guest on our podcast? Have a story to share? Or just want to say hello? We'd love to hear from you.
                     </p>
 
                     <div class="space-y-6">
-                        <div class="flex items-center gap-4">
+                        <div class="contact-tile flex items-center gap-4 rounded-2xl border border-white/5 bg-brand-black/30 p-3">
                             <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             </div>
@@ -454,7 +629,7 @@
                                 <div class="font-medium">hello@sportkulture.com</div>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
+                        <div class="contact-tile flex items-center gap-4 rounded-2xl border border-white/5 bg-brand-black/30 p-3">
                             <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             </div>
@@ -463,7 +638,7 @@
                                 <div class="font-medium">Mumbai, India</div>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
+                        <div class="contact-tile flex items-center gap-4 rounded-2xl border border-white/5 bg-brand-black/30 p-3">
                             <div class="w-12 h-12 bg-brand-red/10 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
                             </div>
@@ -476,41 +651,44 @@
 
                     <!-- Social Links -->
                     <div class="mt-8 flex gap-4">
-                        <a href="#" class="w-10 h-10 bg-brand-black hover:bg-brand-red rounded-lg flex items-center justify-center transition-colors">
+                        <a href="#" class="social-link w-10 h-10 bg-brand-black hover:bg-brand-red rounded-lg flex items-center justify-center transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.924 2.46 3.326 4.643 3.369-2.08 1.649-4.706 2.349-7.354 2.046 2.178 1.394 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-brand-black hover:bg-brand-red rounded-lg flex items-center justify-center transition-colors">
+                        <a href="#" class="social-link w-10 h-10 bg-brand-black hover:bg-brand-red rounded-lg flex items-center justify-center transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.979 6.978-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.978 6.979 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.978.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.978-.891-.043-1.201-.058-3.454-.058zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.439 1.441 1.439c.795 0 1.439-.644 1.439-1.439s-.644-1.44-1.439-1.44z"/></svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-brand-black hover:bg-brand-red rounded-lg flex items-center justify-center transition-colors">
+                        <a href="#" class="social-link w-10 h-10 bg-brand-black hover:bg-brand-red rounded-lg flex items-center justify-center transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-brand-black hover:bg-brand-red rounded-lg flex items-center justify-center transition-colors">
+                        <a href="#" class="social-link w-10 h-10 bg-brand-black hover:bg-brand-red rounded-lg flex items-center justify-center transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.94 5.35A8.03 8.03 0 0 1 12 4c2.74 0 5.19 1.23 6.8 3.16l-1.43 1.43A5.98 5.98 0 0 0 12 6c-1.93 0-3.64.78-4.94 2.05l-1.43-1.43zM4 12c0-2.21.8-4.23 2.13-5.78L5.43 5.5A9.96 9.96 0 0 0 2 12c0 2.36.82 4.53 2.19 6.24l.71-.71A7.95 7.95 0 0 1 4 12zm15.25-5.24A9.95 9.95 0 0 1 22 12c0 2.36-.82 4.53-2.19 6.24l-.71-.71A7.95 7.95 0 0 0 20 12c0-2.21-.8-4.23-2.13-5.78l1.43-1.43zM12 18c1.93 0 3.64-.78 4.94-2.05l1.43 1.43A8.03 8.03 0 0 1 12 20c-2.74 0-5.19-1.23-6.8-3.16l1.43-1.43A5.98 5.98 0 0 0 12 18zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
                         </a>
                     </div>
                 </div>
 
                 <!-- Contact Form -->
-                <div class="bg-brand-black p-8 rounded-2xl border border-white/5">
-                    <form id="contact-form" class="space-y-6">
+                <div class="bg-brand-black p-8 rounded-2xl border border-white/5 premium-panel">
+                    <form id="contact-form" action="https://formsubmit.co/ajax/anshulbutola015@gmail.com" method="POST" class="space-y-6">
+                        <input type="hidden" name="_subject" value="New Sport Kulture contact request">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-medium mb-2">First Name</label>
-                                <input type="text" class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors" placeholder="John">
+                                <input type="text" name="first_name" required class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors" placeholder="John">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-2">Last Name</label>
-                                <input type="text" class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors" placeholder="Doe">
+                                <input type="text" name="last_name" required class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors" placeholder="Doe">
                             </div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-2">Email</label>
-                            <input type="email" class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors" placeholder="john@example.com">
+                            <input type="email" name="email" required class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors" placeholder="john@example.com">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-2">Subject</label>
-                            <select class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors">
+                            <select name="subject" class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors">
                                 <option>General Inquiry</option>
                                 <option>Podcast Guest Request</option>
                                 <option>Magazine Subscription</option>
@@ -520,27 +698,51 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-2">Message</label>
-                            <textarea rows="4" class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors resize-none" placeholder="Tell us what's on your mind..."></textarea>
+                            <textarea rows="4" name="message" required class="w-full px-4 py-3 bg-brand-gray border border-white/10 rounded-lg focus:outline-none focus:border-brand-red transition-colors resize-none" placeholder="Tell us what's on your mind..."></textarea>
                         </div>
                         <button type="submit" class="w-full py-4 bg-brand-red hover:bg-brand-red-dark text-white font-semibold rounded-lg transition-colors">
                             Send Message
                         </button>
+                        <div id="form-status" class="hidden" role="status" aria-live="polite"></div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Temporary payment preview -->
+    <div id="payment-modal" class="hidden fixed inset-0 z-[60] items-center justify-center bg-black/80 px-6 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="payment-title">
+        <div class="w-full max-w-md rounded-2xl border border-white/10 bg-brand-gray p-6 shadow-2xl">
+            <div class="mb-6 flex items-start justify-between gap-4">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-red">Demo checkout</span>
+                    <h2 id="payment-title" class="mt-2 text-2xl font-display font-bold">Magazine subscription</h2>
+                </div>
+                <button id="close-payment-modal" type="button" class="text-gray-400 transition-colors hover:text-white" aria-label="Close payment dialog" title="Close">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="mb-6 flex items-center justify-between border-b border-white/10 pb-5">
+                <span class="text-gray-400">Sport Kulture Issue 01</span>
+                <span class="text-2xl font-bold text-white">₹299</span>
+            </div>
+            <p class="mb-5 text-sm leading-relaxed text-gray-400">This is a temporary checkout preview. Real UPI payments will be enabled after Razorpay is connected.</p>
+            <div class="mb-6 grid grid-cols-2 gap-3">
+                <button type="button" class="payment-option rounded-xl border border-brand-red bg-brand-red/10 p-4 text-left text-sm font-semibold text-white" aria-pressed="true">UPI</button>
+                <button type="button" class="payment-option rounded-xl border border-white/10 bg-brand-black/30 p-4 text-left text-sm font-semibold text-gray-400" aria-pressed="false">Card</button>
+            </div>
+            <button id="demo-payment-button" type="button" class="w-full rounded-lg bg-brand-red py-3.5 font-semibold text-white transition-colors hover:bg-brand-red-dark">Continue in demo mode</button>
+            <p id="payment-status" class="mt-4 hidden text-center text-sm text-emerald-300" role="status"></p>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="py-12 bg-brand-black border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div class="md:col-span-2">
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">SK</span>
-                        </div>
-                        <span class="text-xl font-bold tracking-tight">Sport<span class="text-brand-red">Kulture</span></span>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="access/logo.svg" alt="Sport Kulture" class="h-9 w-auto">
                     </div>
                     <p class="text-gray-500 max-w-md">Inspiring stories from corporate cricket legends. Through podcasts, magazines, and community, we celebrate the spirit of the game.</p>
                 </div>
@@ -576,14 +778,51 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            const isExpanded = !mobileMenu.classList.contains('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(isExpanded));
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
         });
 
         // Close mobile menu when clicking a link
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
             });
         });
+
+        const nav = document.querySelector('nav');
+        const updateNavState = () => {
+            if (window.scrollY > 24) {
+                nav.classList.add('shadow-lg', 'shadow-black/20');
+                nav.classList.remove('border-b');
+            } else {
+                nav.classList.remove('shadow-lg', 'shadow-black/20');
+                nav.classList.add('border-b');
+            }
+        };
+        updateNavState();
+        window.addEventListener('scroll', updateNavState, { passive: true });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.14,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -599,11 +838,116 @@
             });
         });
 
-        // Form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        // Keep fullscreen playback on the current page.
+        document.querySelectorAll('.video-fullscreen').forEach(button => {
+            button.addEventListener('click', () => {
+                const video = button.parentElement.querySelector('video');
+                const enterFullscreen = video.requestFullscreen || video.webkitRequestFullscreen;
+
+                if (enterFullscreen) {
+                    enterFullscreen.call(video);
+                } else if (video.webkitEnterFullscreen) {
+                    video.webkitEnterFullscreen();
+                }
+            });
+        });
+
+        // Temporary checkout preview until Razorpay credentials are available.
+        const subscribeButton = document.getElementById('subscribe-button');
+        const paymentModal = document.getElementById('payment-modal');
+        const closePaymentModal = document.getElementById('close-payment-modal');
+        const demoPaymentButton = document.getElementById('demo-payment-button');
+        const paymentStatus = document.getElementById('payment-status');
+
+        subscribeButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            paymentModal.classList.remove('hidden');
+            paymentModal.classList.add('flex');
+        });
+
+        const hidePaymentModal = () => {
+            paymentModal.classList.add('hidden');
+            paymentModal.classList.remove('flex');
+            paymentStatus.classList.add('hidden');
+            demoPaymentButton.disabled = false;
+            demoPaymentButton.textContent = 'Continue in demo mode';
+        };
+
+        closePaymentModal.addEventListener('click', hidePaymentModal);
+        paymentModal.addEventListener('click', (event) => {
+            if (event.target === paymentModal) {
+                hidePaymentModal();
+            }
+        });
+
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.payment-option').forEach(item => {
+                    item.className = 'payment-option rounded-xl border border-white/10 bg-brand-black/30 p-4 text-left text-sm font-semibold text-gray-400';
+                    item.setAttribute('aria-pressed', 'false');
+                });
+                option.className = 'payment-option rounded-xl border border-brand-red bg-brand-red/10 p-4 text-left text-sm font-semibold text-white';
+                option.setAttribute('aria-pressed', 'true');
+            });
+        });
+
+        demoPaymentButton.addEventListener('click', () => {
+            demoPaymentButton.disabled = true;
+            demoPaymentButton.textContent = 'Processing...';
+            window.setTimeout(() => {
+                demoPaymentButton.textContent = 'Demo payment complete';
+                paymentStatus.textContent = 'Demo order created. No money was charged.';
+                paymentStatus.classList.remove('hidden');
+            }, 500);
+        });
+
+        // Send contact requests through FormSubmit without leaving the page.
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
+            const form = this;
+            const status = document.getElementById('form-status');
+            const button = form.querySelector('button[type="submit"]');
+            button.disabled = true;
+            button.textContent = 'Sending...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Form submission failed');
+                }
+
+                status.innerHTML = `
+                    <div class="mt-2 flex items-start gap-4 rounded-xl border border-emerald-400/20 bg-emerald-400/10 p-4 text-left">
+                        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-300">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m5 12 4 4L19 6"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white">Message received</p>
+                            <p class="mt-1 text-sm leading-relaxed text-gray-300">Thanks for reaching out. Our team will review your message and get back to you shortly.</p>
+                            <button type="button" id="send-another-message" class="mt-3 text-sm font-semibold text-emerald-300 transition-colors hover:text-white">Send another message</button>
+                        </div>
+                    </div>`;
+                status.className = 'block';
+                form.reset();
+                document.getElementById('send-another-message').addEventListener('click', () => {
+                    status.className = 'hidden';
+                    form.querySelector('input[name="first_name"]').focus();
+                });
+            } catch (error) {
+                status.innerHTML = `
+                    <div class="mt-2 rounded-xl border border-red-400/20 bg-red-400/10 p-4 text-sm text-red-200">
+                        We couldn't send your message right now. Please check your connection and try again.
+                    </div>`;
+                status.className = 'block';
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Send Message';
+            }
         });
     </script>
 </body>
